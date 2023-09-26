@@ -4,7 +4,7 @@
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
 <br>test1
 </h1>
-<h3>◦ Test beyond limits, Test1 delivers!</h3>
+<h3>◦ Unleash the future: test1, where innovation meets code.</h3>
 <h3>◦ Developed with the software and tools listed below.</h3>
 
 <p align="center">
@@ -30,24 +30,24 @@
 
 ## 📍 Overview
 
-The AutoDoc project is a command-line application that uses the ChatGPT language model to automatically generate code documentation. It supports the Python language and requires a code file as input. The core functionality involves extracting information from the code file, interacting with the ChatGPT model to generate comments, and merging the comments with the original code to produce a commented version. This project provides a valuable tool for developers to save time and effort in documenting their code.
+The project is an implementation of a code documentation tool called AutoDoc. It utilizes the ChatGPT API to generate documentation from code files, currently supporting Python. The tool takes a code file as input, interacts with the ChatGPT API to generate comments, and then creates a new commented version of the code file. The core functionalities include parsing code files, generating comments using AI-powered chatbot, and providing a convenient way to improve code documentation. This tool simplifies the documentation process and enhances code readability, saving time for developers and improving code collaboration.
 
 ---
 
 ## ⚙️ Features
 
-| Feature                | Description                                                                                       |
-| ---------------------- | ------------------------------------------------------------------------------------------------- |
-| **⚙️ Architecture**     | The codebase follows a modular design pattern with separate files for different functionalities.   |
-| **📖 Documentation**   | The codebase lacks comprehensive documentation, making it difficult for new contributors to understand the purpose and functionality of each component.             |
-| **🔗 Dependencies**    | The codebase relies on external libraries such as os, argparse, configparser, etc.                   |
-| **🧩 Modularity**      | The codebase is organized into smaller components like autodoc.py and main.py for ease of understanding and maintainability.                |
-| **✔️ Testing**          | There is no information available about the testing strategies or tools used in the codebase.                          |
-| **⚡️ Performance**      | The performance of the system is dependent on the underlying models it interacts with, namely ChatGPT.                            |
-| **🔐 Security**        | The codebase does not contain specific measures for data protection or security.                                            |
-| **🔀 Version Control** | The codebase is hosted on GitHub, indicating the use of Git for version control.                                             |
-| **🔌 Integrations**    | The codebase integrates with ChatGPT to generate code documentation based on the given code file.                     |
-| **📶 Scalability**     | The codebase does not contain specific features or considerations for scalability.                                                 |
+| Feature                | Description                                                                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **⚙️ Architecture**     | The codebase follows a simple console application design pattern, where the AutoDoc class interacts with the ChatGPT API to generate code documentation.                                           |
+| **📖 Documentation**    | The codebase lacks comprehensive documentation. Additional comments within the code itself would improve code understanding and maintenance.                                                |
+| **🔗 Dependencies**    | The codebase has external dependencies on the os, argparse, configparser, colorama, and revChatGPT libraries. It also relies on the ChatGPT API for the documentation generation.          |
+| **🧩 Modularity**      | The codebase demonstrates modularity by separating functionality into multiple files, allowing for easier maintenance and component reuse.                                                |
+| **✔️ Testing**          | The codebase doesn't have explicit testing strategies or tools mentioned. Incorporating unit tests would enhance code robustness and reduce the chance of bugs in the future.            |
+| **⚡️ Performance**      | Performance is difficult to assess without benchmarks. However, the system mainly relies on the external ChatGPT API for documentation generation, which could affect performance. |
+| **🔐 Security**        | The codebase doesn't showcase any specific security measures. However, secure storage and transmission of authentication credentials should be ensured to protect sensitive information. |
+| **🔀 Version Control** | Version control is implemented using the Git system, as evident from the repository. Additional details on branching and workflow conventions are not provided in the given information. |
+| **🔌 Integrations**    | The system integrates with the ChatGPT API to generate code documentation. Configurable options via the "config.ini" file allow for easy integration with different setups.          |
+| **📶 Scalability**     | Scalability is not a key objective of the codebase, but it can handle code files of varying lengths. Expanding language support and optimizing API usage could enhance scalability.      |
 
 ---
 
@@ -63,21 +63,39 @@ The AutoDoc project is a command-line application that uses the ChatGPT language
 
 ## AutoDoc-ChatGPT\main.py
 
-The code is a command-line application called AutoDoc, which is used for generating code documentation using ChatGPT. It supports Python language and requires a code file as input.
+The code script is a console application called AutoDoc that generates code documentation using ChatGPT. It currently supports Python as a language. The application takes a code file as input and uses the ChatGPT API to generate the documentation. It then creates a new commented file with the generated documentation.
 
-The code first imports necessary modules and packages such as os, argparse, configparser, and the custom modules autodoc, file, and settings. It then reads configuration settings from a config.ini file, which includes authentication details like email, password, and session token.
+The code script starts by importing necessary modules and classes, such as os, argparse, AutoDoc, File, and configparser. It also reads a configuration file called "config.ini" to get authentication credentials.
 
-Next, an argument parser is defined to handle command-line arguments. It specifies that the user must provide a path to the code file using the "-file" flag. If the file does not exist, the program exits with an error message.
+Then, it defines a command-line argument parser with a description of the application. The "-file" argument is required and represents the path to the code file.
 
-The code then creates a File object using the provided code file path. This object reads the content of the file and determines the language of the code.
+Next, it checks if the specified code file exists. If it doesn't exist, the script exits with an error message.
 
-An AutoDoc object is then created, passing in the authentication details, the content of the code file, and the detected language. This object is used to interact with a ChatGPT model for generating the code documentation.
+After that, it creates an instance of the File class using the specified code file. The File object provides methods to read and write to the code file.
 
-The "start" method of the AutoDoc object is called, which generates the documentation based on the code. The result obtained is used to create a new commented file using the File object.
+The script then creates an instance of the AutoDoc class with authentication credentials, the content of the code file, and the language of the code. The AutoDoc object is responsible for interacting with the ChatGPT API and generating the documentation.
 
-Overall, the code performs the task of generating code documentation using the ChatGPT model and saves the commented file with the documentation.
+Finally, it calls the start method of the AutoDoc object to generate the documentation. The result is then used to create a new commented version of the code file using the file.create_commented_file method.
+
+Overall, the code script is a simple implementation of a document generation tool using the ChatGPT API for code documentation.
 ## AutoDoc-ChatGPT\modules\autodoc.py
 
-The code script is an implementation of an Auto Documentation tool called AutoDoc. It takes in a configuration file, code, and language as input parameters. The code is then divided into multiple parts using the Divider module. The divided parts are then sent to the ChatGPT language model to generate comments for each part. The comments are merged with the code using the Result module to create a commented version of the code. Finally, the commented code is returned as the output.
+The code script begins with importing necessary modules and packages such as `os`, `time`, `colorama`, `revChatGPT.V1`, `Prompt`, `Divider`, `Settings`, `Result`, and `Console`. It initializes the colorama module and defines a Tech Lead class called `AutoDoc`. 
 
-There are no newly defined functions or classes in this code script.
+The `AutoDoc` class has an initializer that takes three parameters: `config` (a string containing the configuration details), `code` (a string representing the code to be documented), and `language` (a string indicating the programming language used in the code).
+
+The initializer checks the validity of the input parameters, ensuring that the code is a non-empty string and the language is supported. 
+
+The class also has a private method `__ask` that sends a prompt to the chatbot and receives a response. 
+
+The `start` method is the main entry point of the code. It handles the processing of the code and generating the documentation. It displays the progress of the documentation generation in the console.
+
+The code is divided into separate parts using the `Divider` class. If the code is empty or there is nothing to comment, the program exits. 
+
+The code connects to the `revChatGPT` chatbot using the provided configuration details (session token or email/password). 
+
+Each part of the code is sent to the chatbot to generate comments. The comments are stored in a list. 
+
+The code and comments are merged using the `Result` class to create the commented code. 
+
+Finally, the commented code is returned and displayed in the console.
